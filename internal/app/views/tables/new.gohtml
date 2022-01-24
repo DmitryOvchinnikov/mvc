@@ -1,0 +1,28 @@
+{{define "yield"}}
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Create a text</h3>
+                </div>
+                <div class="panel-body">
+                    {{template "tableForm"}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{end}}
+
+{{define "tableForm"}}
+
+    <form action="/tables" method="POST">
+        <div class="form-group">
+            <label for="title">Text</label>
+            <input type="text" name="text" class="form-control" id="text" placeholder="What is the text?">
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+
+{{end}}

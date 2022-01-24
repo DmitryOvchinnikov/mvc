@@ -4,6 +4,8 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/dmitryovchinnikov/mvc/internal/app/models"
 )
 
 const (
@@ -118,4 +120,3 @@ func RedirectAlert(w http.ResponseWriter, r *http.Request, urlStr string, code i
 	persistAlert(w, alert)
 	http.Redirect(w, r, urlStr, code)
 }
-

@@ -1,0 +1,37 @@
+{{define "yield"}}
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>CodeID</th>
+                    <th>Text</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{range .}}
+                    <tr>
+                        <th scope="row">{{.CodeID}}</th>
+                        <td>{{.Text}}</td>
+                        <td>
+                            <a href="/tables/{{.CodeID}}">
+                                View
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/tables/{{.CodeID}}/edit">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                {{end}}
+                </tbody>
+            </table>
+            <a href="/tables/new" class="btn btn-primary">
+                New Text
+            </a>
+        </div>
+    </div>
+
+{{end}}

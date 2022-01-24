@@ -1,0 +1,82 @@
+{{define "yield"}}
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h2>Edit your table</h3>
+                <a href="/tables/{{.ID}}">
+                    View this table:
+                </a>
+                <hr>
+        </div>
+        <div class="col-md-12">
+            {{template "editTableForm" .}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            <label class="control-label pull-right">
+                Text
+            </label>
+        </div>
+        <div class="col-md-10">
+            {{template "tableText" .}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{template "uploadTableForm" .}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h3>Dangerous buttons...</h3>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            {{template "deleteTableForm" .}}
+        </div>
+    </div>
+{{end}}
+
+{{define "editTableForm"}}
+    <form action="/tables/{{.ID}}/update" method="POST" class="form-horizontal">
+        <div class="form-group">
+            <label for="title" class="col-md-1 control-label">Text</label>
+            <div class="col-md-10">
+                <input type="text" name="title" class="form-control" id="title" placeholder="What is the text?" value="{{.Text}}">
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-default">Save</button>
+            </div>
+        </div>
+    </form>
+{{end}}
+
+{{define "deleteTableForm"}}
+    <form action="/tables/{{.ID}}/delete" method="POST" class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-10 col-md-offset-1">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </form>
+{{end}}
+
+{{define "uploadTableForm"}}
+    <form action="/tables/{{.ID}}/text" method="POST" enctype="multipart/form-data" class="form-horizontal">
+        <div class="form-group">
+            <label for="texts" class="col-md-1 control-label">Add Text</label>
+            <div class="col-md-10">
+                <input type="file" multiple="multiple" id="texts" name="texts">
+                <p class="help-block">Please add text.</p>
+                <button type="submit" class="btn btn-default">Upload</button>
+            </div>
+        </div>
+    </form>
+{{end}}
+
+{{define "tableText"}}
+
+
+{{end}}
+
+

@@ -56,7 +56,7 @@ func WithTable() ServicesConfig {
 func NewServices(cfgs ...ServicesConfig) (*Services, error) {
 	var s Services
 	for _, cfg := range cfgs {
-		err := cfg(*s)
+		err := cfg(&s)
 		if err != nil {
 			return nil, err
 		}

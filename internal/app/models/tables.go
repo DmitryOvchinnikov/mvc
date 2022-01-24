@@ -19,6 +19,7 @@ type TableService interface {
 }
 
 type TableDB interface {
+	SelectAll() ([]Table, error)
 	ByID(id uuid.UUID) (*Table, error)
 	ByCodeID(codeID uuid.UUID) ([]Table, error)
 	Create(table *Table) error
@@ -95,6 +96,16 @@ func (t *tableGORM) Create(table *Table) error {
 
 func (t *tableGORM) Update(table *Table) error {
 	return t.db.Save(table).Error
+}
+
+func (t *tableGORM) SelectAll() ([]Table, error) {
+	var tables []Table
+	err := t.db.Select("id", "text", "code_id", "code", "name").Find(&tables).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return tables, nil
 }
 
 // first will query using the provided gorm.DB and it will
